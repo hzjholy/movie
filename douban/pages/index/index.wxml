@@ -1,0 +1,34 @@
+<!-- 首页 -->
+<view class="page-header">
+	<!-- 标题 -->
+	<text class="page-header-text">
+		{{title}}
+	</text>
+</view>
+<!-- 主体 -->
+<!-- scroll-y="true"纵向滑动 -->
+<scroll-view class="page-body" scroll-y="true">
+	<!-- 导航链接 -->
+	<!-- navigator -->
+	<navigator url="../movie/movie?id={{item.id}}" wx:for="{{movies}}">
+		<!-- 父容器 -->
+		<view class="item">
+			<!-- 小的缩略图 -->
+			<image class="poster" src="{{item.images.small}}"></image>
+			<view class="meta">
+				<!-- 标题 -->
+				<text class="title">{{item.title}}</text>
+				<!-- 别名 -->
+				<text class="sub-title">{{item.original_title}}({{item.year}})</text>
+				<!-- 导演，可能有多个 -->
+				<text class="artists">
+					<text wx:for="{{item.directors}}" wx:for-item="directorsItem">{{directorsItem.name}}</text>
+				</text>
+			</view>
+			<!-- 评分 -->
+			<view>
+				<text class="rating">{{item.rating.average}}</text>
+			</view>
+		</view>
+	</navigator>
+</scroll-view>
